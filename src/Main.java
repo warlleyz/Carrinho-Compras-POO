@@ -109,7 +109,44 @@ public class Main {
 
                     break;
                 case 3:
-                    System.out.println("Excluir item");
+
+                    if (fatura.getItens().isEmpty()) {
+                        System.out.println("A fatura está vazia.");
+                        break;
+                    }
+
+                    System.out.println("\n===== EXCLUIR ITEM =====");
+
+                    for (int i = 0; i < fatura.getItens().size(); i++) {
+
+                        Item itemFatura = fatura.getItens().get(i);
+
+                        System.out.println(
+                                (i + 1)
+                                        + " - "
+                                        + itemFatura.getProduto().getNome()
+                                        + " | Quantidade: "
+                                        + itemFatura.getQuantidade());
+                    }
+
+                    System.out.println("0 - Voltar");
+
+                    System.out.print("Escolha o item: ");
+                    int numeroItem = sc.nextInt();
+
+                    if (numeroItem == 0) {
+                        break;
+                    }
+
+                    if (numeroItem < 1 || numeroItem > fatura.getItens().size()) {
+                        System.out.println("Item inválido.");
+                        break;
+                    }
+
+                    fatura.removerItem(numeroItem - 1);
+
+                    System.out.println("Item removido.");
+
                     break;
                 case 4:
                     System.out.println("Alterar item");
