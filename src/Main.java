@@ -196,7 +196,13 @@ public class Main {
 
                     break;
                 case 5:
-                    System.out.println("Finalizando...");
+
+                    System.out.println("\n===== COMPRA FINALIZADA =====");
+
+                    System.out.printf(
+                            "Valor final: R$ %.2f%n",
+                            fatura.calcularTotal());
+
                     break;
                 default:
                     System.out.println("Opção inválida.");
