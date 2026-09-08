@@ -83,7 +83,30 @@ public class Main {
 
                     break;
                 case 2:
-                    System.out.println("Ver Fatura");
+
+                    System.out.println("\n===== FATURA =====");
+
+                    if (fatura.getItens().isEmpty()) {
+
+                        System.out.println("A fatura está vazia.");
+
+                    } else {
+
+                        for (Item itemFatura : fatura.getItens()) {
+
+                            System.out.println(
+                                    itemFatura.getProduto().getNome()
+                                            + " | Quantidade: "
+                                            + itemFatura.getQuantidade()
+                                            + " | Total: R$ "
+                                            + itemFatura.calcularTotal());
+                        }
+
+                        System.out.printf(
+                                "Valor total: R$ %.2f%n",
+                                fatura.calcularTotal());
+                    }
+
                     break;
                 case 3:
                     System.out.println("Excluir item");
