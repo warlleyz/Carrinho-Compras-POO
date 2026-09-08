@@ -149,7 +149,51 @@ public class Main {
 
                     break;
                 case 4:
-                    System.out.println("Alterar item");
+
+                    if (fatura.getItens().isEmpty()) {
+                        System.out.println("A fatura está vazia.");
+                        break;
+                    }
+
+                    System.out.println("\n===== ALTERAR ITEM =====");
+
+                    for (int i = 0; i < fatura.getItens().size(); i++) {
+
+                        Item itemFatura = fatura.getItens().get(i);
+
+                        System.out.println(
+                                (i + 1)
+                                        + " - "
+                                        + itemFatura.getProduto().getNome()
+                                        + " | Quantidade: "
+                                        + itemFatura.getQuantidade());
+                    }
+
+                    System.out.println("0 - Voltar");
+
+                    System.out.print("Escolha o item: ");
+                    int numeroAlteracao = sc.nextInt();
+
+                    if (numeroAlteracao == 0) {
+                        break;
+                    }
+
+                    if (numeroAlteracao < 1 ||
+                            numeroAlteracao > fatura.getItens().size()) {
+
+                        System.out.println("Item inválido.");
+                        break;
+                    }
+
+                    Item itemAlterado = fatura.getItens().get(numeroAlteracao - 1);
+
+                    System.out.print("Nova quantidade: ");
+                    int novaQuantidade = sc.nextInt();
+
+                    itemAlterado.setQuantidade(novaQuantidade);
+
+                    System.out.println("Quantidade alterada.");
+
                     break;
                 case 5:
                     System.out.println("Finalizando...");
