@@ -27,7 +27,60 @@ public class Main {
 
             switch (opcao) {
                 case 1:
-                    System.out.println("Comprar");
+
+                    System.out.println("\n===== PRODUTOS =====");
+
+                    System.out.println(
+                            p1.getCodigo() + " - "
+                                    + p1.getNome()
+                                    + " - R$ "
+                                    + p1.getPreco());
+
+                    System.out.println(
+                            p2.getCodigo() + " - "
+                                    + p2.getNome()
+                                    + " - R$ "
+                                    + p2.getPreco());
+
+                    System.out.println(
+                            p3.getCodigo() + " - "
+                                    + p3.getNome()
+                                    + " - R$ "
+                                    + p3.getPreco());
+
+                    System.out.println("0 - Voltar");
+
+                    System.out.print("Código do produto: ");
+                    int codigo = sc.nextInt();
+
+                    if (codigo == 0) {
+                        break;
+                    }
+
+                    Produto produtoEscolhido = null;
+
+                    if (codigo == p1.getCodigo()) {
+                        produtoEscolhido = p1;
+                    } else if (codigo == p2.getCodigo()) {
+                        produtoEscolhido = p2;
+                    } else if (codigo == p3.getCodigo()) {
+                        produtoEscolhido = p3;
+                    }
+
+                    if (produtoEscolhido == null) {
+                        System.out.println("Produto não encontrado.");
+                        break;
+                    }
+
+                    System.out.print("Quantidade: ");
+                    int quantidade = sc.nextInt();
+
+                    Item item = new Item(produtoEscolhido, quantidade);
+
+                    fatura.adicionarItem(item);
+
+                    System.out.println("Produto adicionado.");
+
                     break;
                 case 2:
                     System.out.println("Ver Fatura");
@@ -43,9 +96,9 @@ public class Main {
                     break;
                 default:
                     System.out.println("Opção inválida.");
-            }   
+            }
 
         } while (opcao != 5);
-            sc.close();
+        sc.close();
     }
 }
